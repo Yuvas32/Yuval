@@ -1,0 +1,40 @@
+import matplotlib.pyplot as plt
+import cv2
+import skimage.io as io
+from copy import deepcopy
+img = io.imread("C:\\Users\\Owner\\Downloads\\Pics\\Grass.jpg")
+
+channel1 = deepcopy(img)
+channel2 = deepcopy(img)
+channel3 = deepcopy(img)
+channel4 = deepcopy(img)
+
+channel1 [:,:,1]=0
+channel1 [:,:,2]=0
+
+channel2 [:,:,0]=0
+channel2 [:,:,1]=0
+
+channel3 [:,:,0]=0
+channel3 [:,:,2]=0
+
+fig , ax = plt.subplots(ncols=2, nrows=2)
+
+ax[0,0].imshow(img)
+ax[0,0].set_title("Original")
+
+ax[0,1].imshow(channel1)
+ax[0,1].set_title("color 1")
+
+ax[1,0].imshow(channel2)
+ax[1,0].set_title("color 2")
+
+ax[1,1].imshow(channel3)
+ax[1,1].set_title("color 3")
+
+#cv2.imshow("original", img)
+#cv2.imshow("blue", channel1)
+cv2.imshow("red", channel2)
+#cv2.imshow("green", channel3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
